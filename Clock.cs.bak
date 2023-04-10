@@ -1,0 +1,39 @@
+using System;
+using System.Threading;
+delegate void secChange();
+class Clock{
+	public event secChange secChangeEvt;
+	public void onsecChange(){
+		for(;;){
+			Thread.Sleep(1000);
+			if(secChangeEvt!=null)
+				secChangeEvt();
+		}
+	}
+} 
+class secChangeListener{
+	static int d=0,h=0,m=0,s=0;
+	static public void Handler(){
+		s++;
+		if(s==60){
+			m++;
+			s=0;
+		}
+		if(m==60){
+			h++;
+			m=0;
+		}
+		if(h==60){
+			d++;
+			h=0;
+		}
+		Console.Clear();
+		Console.SetCursorPosition(20,20 );
+		Console.WriteLine(d+":"+h+":"+m+":"+s+":");
+	}
+	static void Main(){
+		Clock c =new Clock();
+		c.secChangeEvt+=Handler;
+		c.onsecChange();
+	}
+}

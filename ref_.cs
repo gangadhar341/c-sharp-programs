@@ -1,0 +1,29 @@
+using System;
+class SwapDemo{
+	public void RefSwap(ref int n1,ref int n2){
+		int temp=n1;
+		n1=n2;
+		n2=temp;
+	}
+	public int OutSwap(int n1,int n2,out int n3){
+		int temp=n1;
+		n1=n2;
+		n3=temp;
+		return n1;
+	}
+}
+class SwapTest{
+	static void Main(){
+		int n3;
+		Console.WriteLine("Enter two numbers:");
+		int n1=Convert.ToInt32(Console.ReadLine());
+		int n2=Convert.ToInt32(Console.ReadLine());
+		SwapDemo sd = new SwapDemo();
+		Console.WriteLine("Before swap n1="+n1+" n2="+n2);
+		sd.RefSwap(ref n1,ref n2);
+		Console.WriteLine("Swap using Ref n1="+n1+" n2="+n2);
+		n1=sd.OutSwap(n1,n2,out n3);
+		n2=n3;
+		Console.WriteLine("After:\nn1={0},n2={1}",n1,n2);
+	}
+}

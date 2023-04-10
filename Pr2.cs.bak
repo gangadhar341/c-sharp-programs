@@ -1,0 +1,22 @@
+using System;
+class PrDemo{
+	public void RefMath(int a,int b,ref int c,ref int d){
+		c=a+b;
+		d=a*b;
+	}public void OutMath(int a,int b,out int c,out int d){
+		c=a-b;
+		d=a/b;
+	}
+}
+class Pr2{
+	static void Main(){
+		PrDemo pr=new PrDemo();
+		Console.WriteLine("Enter Two Numbers:");
+		int n1=Convert.ToInt32(Console.ReadLine());
+		int n2=Convert.ToInt32(Console.ReadLine());
+		
+		int p=0,q=0;
+		pr.RefMath(n1,n2,ref p,ref q);
+		Console.WriteLine("Using Ref:"+p+" "+q);
+	}
+}

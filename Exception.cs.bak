@@ -1,0 +1,34 @@
+using System;
+namespace Demo{
+	class TestTemperature{
+		static void Main(){
+			
+			Temperature temp=new Temperature();
+			Console.WriteLine("Enter Temperature:");
+			try{
+				temp.showTemp();
+			}
+			catch(TempIsZeroException e){
+				Console.WriteLine("TempIsZeroException:{0}",e.Message);
+			}
+			Console.ReadKey();
+		}
+	}
+	public class TempIsZeroException:Exception{
+		public TempIsZeroException(string Message):base(Message){
+			
+		}
+	}
+	public class Temperature{
+		
+		int temperature=Convert.ToInt32(Console.ReadLine());
+		public void showTemp(){
+			if(temperature==0){
+				throw(new TempIsZeroException("Zero Temperature found:"));
+			}
+			else{
+				Console.WriteLine("Temperature:{0}",temperature);
+			}
+		}
+	}
+}

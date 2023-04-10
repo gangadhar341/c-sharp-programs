@@ -1,0 +1,22 @@
+using System;
+class RefOut{
+	public void Method_R(int a,int b,ref int c,ref int d){
+		c=a+b;
+		d=a*b;
+	}
+	public void Method_O(int a,int b,out int c,out int d){
+		c=a+b;
+		d=a*b;
+	}
+}
+class RefOutDemo{
+	static void Main(){
+		int p=0,q=0;
+		Console.WriteLine("Enter two value for Ref&Out: ");
+		a=Convert.ToInt32(Console.ReadLine());
+		b=Convert.ToInt32(Console.ReadLine());
+		Method_R(a,a,ref p,ref q );
+		
+		
+	}
+}
